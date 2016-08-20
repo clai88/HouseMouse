@@ -13,7 +13,7 @@
 
   <body>
     <% if user_signed_in? %>
-    <li><%= link_to "Dashboard", dashboard_show_path %></li>
+    <li><%= link_to "Dashboard", root_path %></li>
     <p>
       Signed in as <%= link_to current_user.email, edit_user_registration_path %></p>
       <li>

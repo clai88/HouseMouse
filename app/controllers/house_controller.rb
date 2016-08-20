@@ -1,10 +1,10 @@
 class HouseController < ApplicationController
-  def new
-  end
-
   def create
   end
 
-  def index
+  def search
+  end
+
+  def show
   end
 end
