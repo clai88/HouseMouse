@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>HouseHouse</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>HouseHouse</title>
+  <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<main>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
   <body>
-    <%= yield %>
-  </body>
-</html>
+    <% if user_signed_in? %>
+    <li><%= link_to "Dashboard", dashboard_show_path %></li>
+    <p>
+      Signed in as <%= link_to current_user.email, edit_user_registration_path %></p>
+      <li>
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+      </li>
+      <% else %>
+      <li>
+        <%= link_to "Sign In", new_user_session_path %>
+      </li>
+      <% end %>
+      <%= yield %>
+    </body>
+
+  </main>
+
+  </html>
