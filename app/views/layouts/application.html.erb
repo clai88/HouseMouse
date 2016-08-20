@@ -6,24 +6,66 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
 </head>
 <main>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
 
-  <body>
-    <% if user_signed_in? %>
-    <li><%= link_to "Dashboard", root_path %></li>
-    <p>
-      Signed in as <%= link_to current_user.email, edit_user_registration_path %></p>
-      <li>
-        <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-      </li>
-      <% else %>
-      <li>
-        <%= link_to "Sign In", new_user_session_path %>
-      </li>
-      <% end %>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">House Investor</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <% if user_signed_in? %>
+          <li class="active"><a href="#">My houses <span class="sr-only">(current)</span></a></li>
+          <% else %>
+<li class="disabled"><a href="#">My houses <span class="sr-only">(current)</span></a></li>
+          <% end %>
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+              <li class="divider"></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+
+              Signed in as <%= link_to current_user.email, edit_user_registration_path %>
+
+
+                <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+
+              <% else %>
+              <li>
+                <%= link_to "Sign In", new_user_session_path %>
+              </li>
+              <% end %>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
       <%= yield %>
     </body>
 
