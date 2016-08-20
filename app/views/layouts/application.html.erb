@@ -27,7 +27,7 @@
           <% if user_signed_in? %>
           <li class="active"><a href="#">My houses <span class="sr-only">(current)</span></a></li>
           <% else %>
-<li class="disabled"><a href="#">My houses <span class="sr-only">(current)</span></a></li>
+          <li class="disabled"><a href="#">My houses <span class="sr-only">(current)</span></a></li>
           <% end %>
 
           <li class="dropdown">
@@ -44,31 +44,30 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <% if user_signed_in? %>
+          <% if user_signed_in? %>
 
-              Signed in as <%= link_to current_user.email, edit_user_registration_path %>
+          Signed in as <%= link_to current_user.email, edit_user_registration_path %>
 
 
-                <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
 
-              <% else %>
-              <li>
-                <%= link_to "Sign In", new_user_session_path %>
-              </li>
-              <% end %>
+          <% else %>
+          <li>
+            <%= link_to "Sign In", new_user_session_path %>
+          </li>
+          <% end %>
 
         </ul>
       </div>
     </div>
   </nav>
 
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <%= yield %>
+</body>
 
-      <%= yield %>
-    </body>
+</main>
 
-  </main>
-
-  </html>
+</html>
