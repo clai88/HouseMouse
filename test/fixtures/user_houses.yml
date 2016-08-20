@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: MyString
+  house_id: 1
+  starred: false
+  description: MyText
+
+two:
+  user_id: MyString
+  house_id: 1
+  starred: false
+  description: MyText

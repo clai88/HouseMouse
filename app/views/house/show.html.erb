@@ -1,2 +1,54 @@
-<h1>House#show</h1>
-<p>Find me in app/views/house/show.html.erb</p>
+<h1>show</h1>
+
+street address = <%= @params["address"]["street"] %>
+<br>
+<%= @params["address"]["city"] %>,
+<%= @params["address"]["state"] %>
+<br>
+
+Current Price = <%= @params["zestimate"]["amount"]["__content__"] %> USD
+<br>
+Year Built = <%= @params["yearBuilt"] %>
+<br>
+Finished Square Feet = <%= @params["finishedSqFt"] %>
+<br>
+Bathrooms = <%= @params["bathrooms"] %>
+<br>
+Last Sold Date = <%= @params["lastSoldDate"] %>
+<br>
+Last Sold Price = <%= @params["lastSoldPrice"]["__content__"] %> USD
+
+<br>
+<br>
+
+WalkScore = <%= @walk_score[0] %>
+
+<br>
+
+description = <%= @walk_score[1] %>
+
+
+<table>
+  <tbody>
+    <tr>
+      <td>90&ndash;100</td>
+      <td><strong>Walker&rsquo;s Paradise</strong><br> Daily errands do not require a car</td>
+    </tr>
+    <tr>
+      <td>70&ndash;89</td>
+      <td><strong>Very Walkable</strong><br>Most errands can be accomplished on foot</td>
+    </tr>
+    <tr>
+      <td>50&ndash;69</td>
+      <td><strong>Somewhat Walkable</strong><br>Some errands can be accomplished on foot</td>
+    </tr>
+    <tr>
+      <td>25&ndash;49</td>
+      <td><strong>Car-Dependent</strong><br>Most errands require a car</td>
+    </tr>
+    <tr>
+      <td>0&ndash;24</td>
+      <td><strong>Car-Dependent</strong><br>Almost all errands require a car</td>
+    </tr>
+  </tbody>
+</table>

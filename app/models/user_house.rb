@@ -1,0 +1,2 @@
+class UserHouse < ApplicationRecord
+end

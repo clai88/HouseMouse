@@ -5,22 +5,18 @@
   <small>FRED SHERO <cite title="Source Title">1974 Stanley Cup Finals</cite></small>
 </blockquote>
 
+
+<div class="col-md-3">
 <h1>search for house</h1>
 
 <%# binding.pry %>
 
 <%= bootstrap_form_for House.new,url: house_index_path do |f| %>
 <%= f.text_field :street_address %>
-
 <br>
-
 <%= f.text_field :zip %>
 <br>
-
-or
-
-<br>
-<%= f.text_field :city_state %>
-
 <%= f.submit "search for houses" %>
 <% end %>
+
+</div>

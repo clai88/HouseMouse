@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160820175657) do
+ActiveRecord::Schema.define(version: 20160820194628) do
 
   create_table "houses", force: :cascade do |t|
     t.integer  "zpid"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20160820175657) do
     t.integer  "amount_of_times_searched"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+  end
+
+  create_table "user_houses", force: :cascade do |t|
+    t.string   "user_id"
+    t.integer  "house_id"
+    t.boolean  "starred"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
