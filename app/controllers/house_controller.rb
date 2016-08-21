@@ -1,4 +1,13 @@
 class HouseController < ApplicationController
+  def index
+    current_user_houses = UserHouse.where(user_id: current_user.id)
+    
+    @houses = []
+    current_user_houses.each do |user_house|
+      @houses << House.find_by(id: user_house.house_id)
+    end
+  end
+
   def create
     house_params["street_address"].downcase!
     @house = House.new(house_params)
@@ -11,16 +20,16 @@ class HouseController < ApplicationController
       elsif !user_signed_in? && @house.valid?
         redirect_to house_path(same_house.id)
       else
-        :show
+        :new
       end
     else #new house
       if user_signed_in? && @house.save
         UserHouse.create(user_id: current_user.id, house_id: @house.id)
         redirect_to house_path(@house.id)
-      elsif !user_signed_in && @house.save
+      elsif !user_signed_in? && @house.save
         redirect_to house_path(@house.id)
       else
-        :show
+        :new
       end
     end
   end

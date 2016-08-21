@@ -1,2 +1,17 @@
-<h1>House#index</h1>
-<p>Find me in app/views/house/index.html.erb</p>
+<h1>Previously searched houses</h1>
+
+
+<% @houses.each do |house| %>
+  <div class="house">
+    <%# address =  %>
+    <%= link_to house.street_address + ", " + house.zip.to_s,
+    url: house_path(house.id) %>
+
+
+
+  <p>
+    last searched on: <%= house.created_at.to_formatted_s(:long_ordinal) %>
+  </p>
+</div>
+<% end %>
+<hr>
