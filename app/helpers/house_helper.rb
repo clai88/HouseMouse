@@ -17,6 +17,43 @@ module HouseHelper
       self.class.get("/GetSearchResults.htm?zws-id=#{@zwsid}&address=#{address}&citystatezip=#{city}")
     end
 
+    def get_error_code
+      result = get_house_info
+      code = result["searchresults"]["message"]["code"]
+      case code
+      when "0"
+        "Request successfully processed"
+      when "1"
+        "Service error-there was a server-side error while processing the request"
+      when "2"
+        ["Welp.  Whoever coded this stupid website messed up."]
+      when "3"
+        ["Web services are currently unavailable","Please come back later and try again."]
+      when "4"
+        ["The Zillow Web Service is currently not available.","Please come bac later and try again."]
+      when "500"
+        ["Invalid or missing address parameter", "Please make sure you have inputted a  valid address."]
+      when "501"
+        ["Invalid or missing citystatezip parameter", "Please make sure you have inputted a  valid address."]
+      when "502"
+        ["No results found." , "Sorry, the address you provided is not found in Zillow's property database."]
+      when "503"
+        ["Failed to resolve city, state or ZIP code", "Please check to see if the city/state you entered is valid. If you provided a ZIP code, check to see if it is valid."]
+      when "504"
+        ["No coverage for specified area","The specified area is not covered by the Zillow property database. To see property coverage tables, click here.", "http://www.zillow.com/zestimate/#acc"]
+      when "505"
+        ["Timeout","Your request timed out. The server could be busy or unavailable. Try again later."]
+      when "506"
+        ["Address string too long.	If address is valid, try using abbreviations."]
+      when "507"
+        ["No exact match found.","Please verify that the given address is correct."]
+      when "508"
+        ["No exact match found.","Please verify that the given address is correct."]
+      else
+        ["you fucked up"]
+      end
+    end
+
     def get_zpid
       result = get_house_info
       zpid_and_lat_long = []

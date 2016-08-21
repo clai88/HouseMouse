@@ -1,0 +1,14 @@
+<div class="error">
+
+<h1>Oops! It appears that something went wrong.</h1>
+<img src="http://www.pd4pic.com/images/-penguin-tux-animal-bird-cute-cartoon-confused.png" alt="" height="250" width="256" />
+
+<h3><%= @status_code[0] %></h3>
+
+<h5><%= @status_code[1] %></h5>
+
+
+
+<h5><%= link_to "Zillow property coverage tables", @status_code[2] if @status_code[2]%></h5>
+
+</div>

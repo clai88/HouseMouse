@@ -33,3 +33,9 @@
   font: normal 13px/24px Georgia, "Times New Roman", Palatino, serif;
   margin: 0 5px 10px 0;
 }
+
+.error {
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}

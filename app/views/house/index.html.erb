@@ -2,15 +2,12 @@
 
 
 <% @houses.each do |house| %>
-  <div class="house">
-    <%# address =  %>
-    <%= link_to house.street_address + ", " + house.zip.to_s,
-    url: house_path(house.id) %>
-
-
+<div class="house">
+  <%# address =  %>
+  <%= link_to house.street_address + ", " + house.zip.to_s, house_path(house.id) %>
 
   <p>
-    last searched on: <%= house.created_at.to_formatted_s(:long_ordinal) %>
+    searched on: <%= house.created_at.to_formatted_s(:long_ordinal).split(" ")[0..2].join(" ") %>
   </p>
 </div>
 <% end %>

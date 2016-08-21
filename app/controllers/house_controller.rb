@@ -1,7 +1,7 @@
 class HouseController < ApplicationController
   def index
     current_user_houses = UserHouse.where(user_id: current_user.id)
-    
+
     @houses = []
     current_user_houses.each do |user_house|
       @houses << House.find_by(id: user_house.house_id)
@@ -41,6 +41,12 @@ class HouseController < ApplicationController
   def show
     @house = House.find_by(id: params["id"])
     search = HouseHelper::GetSearch.new(@house.street_address,@house.zip)
+    # binding.pry
+    @status_code = search.get_error_code
+    unless @status_code[0] == "Request successfully processed"
+      render :house_not_found
+      return
+    end
     @zpid_lat_long = search.get_zpid
     @house.update(zpid: @zpid_lat_long[0])
     @params = HouseHelper::GetDeepComps.new(@zpid_lat_long[0]).get_specific_parameters
