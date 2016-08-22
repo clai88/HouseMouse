@@ -20,52 +20,69 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">House Investor</a>
+        <a class="navbar-brand" href="/">
+          <%= fa_icon "home" %>
+          House Investor</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <% if user_signed_in? %>
+            <li class="active"><a href=<%= house_index_path %>>My houses <span class="sr-only">(current)</span></a></li>
+            <% else %>
+            <li class="disabled"><a href="#">My houses <span class="sr-only">(current)</span></a></li>
+            <% end %>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+            Signed in as <%= link_to current_user.email.split("@")[0], edit_user_registration_path %> |
+
+            <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+
+            <% else %>
+            <li>
+              <%= link_to "Sign In", new_user_session_path %>
+            </li>
+            <% end %>
+
+          </ul>
+        </div>
       </div>
+    </nav>
 
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <% if user_signed_in? %>
-          <li class="active"><a href=<%= house_index_path %>>My houses <span class="sr-only">(current)</span></a></li>
-          <% else %>
-          <li class="disabled"><a href="#">My houses <span class="sr-only">(current)</span></a></li>
-          <% end %>
 
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-              <li class="divider"></li>
-              <li><a href="#">One more separated link</a></li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-          Signed in as <%= link_to current_user.email.split("@")[0], edit_user_registration_path %> |
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
-          <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+    <%= yield %>
 
-          <% else %>
-          <li>
-            <%= link_to "Sign In", new_user_session_path %>
-          </li>
-          <% end %>
 
-        </ul>
-      </div>
+    <div class="container">
+      <footer class="footer navbar-fixed-bottom">
+        <aside id="social-icons">
+          <%= link_to fa_icon("twitter 2x"), "https://twitter.com/houseinvestor8", target: 'blank'  %>
+          <%= link_to fa_icon("instagram 2x"), "https://www.instagram.com/HouseInvestor/?hl=en", target: 'blank' %>
+          <%= link_to fa_icon("github 2x"), "https://github.com/westmd23/street_fleet", target: 'blank' %>
+        </aside>
+      </footer>
     </div>
-  </nav>
 
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
 
-  <%= yield %>
-</body>
+
+  </body>
 
 </main>
 

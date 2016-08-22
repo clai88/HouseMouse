@@ -43,7 +43,7 @@ class HouseController < ApplicationController
     search = HouseHelper::GetSearch.new(@house.street_address,@house.zip)
     # binding.pry
     @status_code = search.get_error_code
-    unless @status_code[0] == "Request successfully processed"
+    unless search.get_house_info["searchresults"]["message"]["code"] == "0"
       render :house_not_found
       return
     end
@@ -54,6 +54,9 @@ class HouseController < ApplicationController
     @walk_score = walk_score(@house.street_address, @params["address"]["city"], @params["address"]["state"],@house.zip,
     @params["address"]["latitude"],
     @params["address"]["longitude"])
+  end
+
+  def mortgage_info
   end
 
   def walk_score(address,city,state,zip,lat,long)

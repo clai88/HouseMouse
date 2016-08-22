@@ -1,8 +1,8 @@
-
-
 <blockquote>
   <p>Win today and we walk together forever</p>
   <small>FRED SHERO <cite title="Source Title">1974 Stanley Cup Finals</cite></small>
+  <%= fa_stacked_icon "twitter", base: "square-o" %>
+
 </blockquote>
 
 
@@ -10,7 +10,7 @@
 <h1>search for house</h1>
 
 <%= bootstrap_form_for House.new,url: house_index_path do |f| %>
-<%= f.text_field :street_address, icon: "house" %>
+<%= f.text_field :street_address, icon: "user" %>
 <br>
 <%= f.text_field :zip %>
 <br>
