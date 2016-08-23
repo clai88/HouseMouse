@@ -58,11 +58,13 @@
             <% if user_signed_in? %>
             Signed in as <%= link_to current_user.email.split("@")[0], edit_user_registration_path %> |
 
-            <%= link_to fa_icon("sign-out x") + "  Log Out", destroy_user_session_path, method: :delete %>
+            <span style="font-size:15px">
+              <%= link_to fa_icon("sign-out x") + "  Log Out", destroy_user_session_path, method: :delete %>
+            </span>
 
             <% else %>
             <li>
-            <%= link_to fa_icon("sign-in x") + "  Sign in", new_user_session_path %>
+              <%= link_to fa_icon("sign-in x") + "  Sign in", new_user_session_path %>
             </li>
             <% end %>
 

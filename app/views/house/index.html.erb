@@ -39,7 +39,6 @@
         <% end %>
       </td>
       <td>
-
         <%= link_to @houses[i].street_address, house_path(@houses[i].id) %>
       </td>
       <td>
@@ -49,7 +48,9 @@
         <%= @houses[i].created_at.to_formatted_s(:long_ordinal).split(" ")[0..2].join(" ") %>
       </td>
       <td>
-        <%= @current_user_houses[i].description %>
+        <%= bootstrap_form_for @current_user_houses[i],url: house_edit_path(current_user.id,@current_user_houses[i].id) do |f| %>
+          <%= f.text_field :description, hide_label: true, placeholder: "what a quaint little cottage." %>
+        <% end %>
       </td>
       <td>
         <%= link_to house_destroy_path(current_user.id,@houses[i].id), method: :delete, class: "delete" do %>
