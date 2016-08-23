@@ -1,9 +1,9 @@
 class HouseController < ApplicationController
   def index
-    current_user_houses = UserHouse.where(user_id: current_user.id)
+    @current_user_houses = UserHouse.where(user_id: current_user.id)
 
     @houses = []
-    current_user_houses.each do |user_house|
+    @current_user_houses.each do |user_house|
       @houses << House.find_by(id: user_house.house_id)
     end
   end
@@ -15,7 +15,7 @@ class HouseController < ApplicationController
     same_house = House.find_by(street_address: house_params["street_address"])
     if same_house
       if user_signed_in? && @house.valid?
-        UserHouse.create(user_id: current_user.id, house_id: same_house.id)
+        UserHouse.create(user_id: current_user.id, house_id: same_house.id) if UserHouse.find_by(user_id: current_user.id, house_id: same_house.id).nil?
         redirect_to house_path(same_house.id)
       elsif !user_signed_in? && @house.valid?
         redirect_to house_path(same_house.id)
@@ -24,7 +24,7 @@ class HouseController < ApplicationController
       end
     else #new house
       if user_signed_in? && @house.save
-        UserHouse.create(user_id: current_user.id, house_id: @house.id)
+        UserHouse.create(user_id: current_user.id, house_id: @house.id) if UserHouse.find_by(user_id: current_user.id, house_id: same_house.id).nil?
         redirect_to house_path(@house.id)
       elsif !user_signed_in? && @house.save
         redirect_to house_path(@house.id)
@@ -63,6 +63,22 @@ class HouseController < ApplicationController
     HouseHelper::WalkScore.new(address,
     city + " " + state, zip, lat, long).get_walk_score
   end
+
+  def destroy_search
+    # binding.pry
+    UserHouse.find_by(user_id: params["user_id"], house_id: params["house_id"]).destroy
+
+    redirect_to house_index_path
+  end
+
+  def star
+    record = UserHouse.find_by(user_id: params["user_id"], house_id: params["house_id"])
+    star = record.starred
+    record.update(starred: !star)
+
+    redirect_to house_index_path
+  end
+
 
   private def house_params
     params.require("house").permit(:zpid, :street_address, :zip, :city_state)

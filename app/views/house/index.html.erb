@@ -1,14 +1,63 @@
 <h1>Previously searched houses</h1>
 
 
-<% @houses.each do |house| %>
-<div class="house">
-  <%# address =  %>
-  <%= link_to house.street_address + ", " + house.zip.to_s, house_path(house.id) %>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>
 
-  <p>
-    searched on: <%= house.created_at.to_formatted_s(:long_ordinal).split(" ")[0..2].join(" ") %>
-  </p>
-</div>
-<% end %>
+      </th>
+      <th>
+        Address
+      </th>
+      <th>
+        Zip
+      </th>
+      <th>
+        Searched on
+      </th>
+      <th>
+        Description
+      </th>
+      <th>
+        Delete
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for i in (0...@current_user_houses.length) %>
+    <tr>
+      <td>
+        <% if @current_user_houses[i].starred %>
+        <%= link_to house_star_path(current_user.id,@houses[i].id), method: :patch, class: "delete" do %>
+        <%= fa_icon("star") %>
+        <% end %>
+        <% else %>
+        <%= link_to house_star_path(current_user.id,@houses[i].id), method: :patch, class: "delete" do %>
+        <%= fa_icon("star-o") %>
+        <% end %>
+        <% end %>
+      </td>
+      <td>
+
+        <%= link_to @houses[i].street_address, house_path(@houses[i].id) %>
+      </td>
+      <td>
+        <%= @houses[i].zip %>
+      </td>
+      <td>
+        <%= @houses[i].created_at.to_formatted_s(:long_ordinal).split(" ")[0..2].join(" ") %>
+      </td>
+      <td>
+        <%= @current_user_houses[i].description %>
+      </td>
+      <td>
+        <%= link_to house_destroy_path(current_user.id,@houses[i].id), method: :delete, class: "delete" do %>
+        <%= fa_icon("trash-o") %> <span>delete</span>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 <hr>

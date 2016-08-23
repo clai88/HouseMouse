@@ -4,7 +4,7 @@ one:
   zpid: 1
   street_address: MyString
   zip: 1
-  city_state_string: MyString
+  city_state: MyString
   starred: false
   amount_of_times_searched: 1
 
@@ -12,6 +12,6 @@ two:
   zpid: 1
   street_address: MyString
   zip: 1
-  city_state_string: MyString
+  city_state: MyString
   starred: false
   amount_of_times_searched: 1

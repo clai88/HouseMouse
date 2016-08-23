@@ -7,7 +7,6 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-
 </head>
 <main>
 
@@ -31,6 +30,15 @@
             <li class="active"><a href=<%= house_index_path %>>My houses <span class="sr-only">(current)</span></a></li>
             <% else %>
             <li class="disabled"><a href="#">My houses <span class="sr-only">(current)</span></a></li>
+
+            <script type="text/javascript">
+
+            $(document).ready(function() {
+              $("displaymessage").on("click", function(){
+                $("body").css("background-color", '#663399');
+              });
+            });
+            </script>
             <% end %>
 
             <li class="dropdown">
@@ -50,11 +58,11 @@
             <% if user_signed_in? %>
             Signed in as <%= link_to current_user.email.split("@")[0], edit_user_registration_path %> |
 
-            <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+            <%= link_to fa_icon("sign-out x") + "  Log Out", destroy_user_session_path, method: :delete %>
 
             <% else %>
             <li>
-              <%= link_to "Sign In", new_user_session_path %>
+            <%= link_to fa_icon("sign-in x") + "  Sign in", new_user_session_path %>
             </li>
             <% end %>
 
@@ -67,23 +75,20 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <%= yield %>
+    <div class="padding">
+      <%= yield %>
+    </div>
 
 
     <div class="container">
       <footer class="footer navbar-fixed-bottom">
-        <aside id="social-icons">
+        <aside id="media">
           <%= link_to fa_icon("twitter 2x"), "https://twitter.com/houseinvestor8", target: 'blank'  %>
           <%= link_to fa_icon("instagram 2x"), "https://www.instagram.com/HouseInvestor/?hl=en", target: 'blank' %>
-          <%= link_to fa_icon("github 2x"), "https://github.com/westmd23/street_fleet", target: 'blank' %>
+          <%= link_to fa_icon("github 2x"), "https://github.com/clai88/House-Investor", target: 'blank' %>
         </aside>
       </footer>
     </div>
-
-
-
   </body>
-
 </main>
-
 </html>

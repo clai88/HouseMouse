@@ -1,20 +1,19 @@
 <blockquote>
   <p>Win today and we walk together forever</p>
   <small>FRED SHERO <cite title="Source Title">1974 Stanley Cup Finals</cite></small>
-  <%= fa_stacked_icon "twitter", base: "square-o" %>
-
 </blockquote>
 
-
 <div class="col-xs-12 col-md-8 col-lg-3">
-<h1>search for house</h1>
+  <h1>search for house</h1>
 
-<%= bootstrap_form_for House.new,url: house_index_path do |f| %>
-<%= f.text_field :street_address, icon: "user" %>
-<br>
-<%= f.text_field :zip %>
-<br>
-<%= f.submit "search for houses" %>
-<% end %>
+  <%= bootstrap_form_for House.new,url: house_index_path do |f| %>
+  <%= f.text_field :street_address%>
 
+  <%= f.text_field :zip %>
+
+  <button class="btn btn-primary btn-block">
+    <%= fa_icon("search") %>
+    Submit
+  </button>
+  <% end %>
 </div>

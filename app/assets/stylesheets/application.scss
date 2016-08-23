@@ -45,11 +45,33 @@
 footer, .pad {
   padding: 25px 30px;
   clear: both;
-  #social-icons {
+  #media {
     float: right;
 
     a {
-      padding: 5px;
+      padding: 7px;
     }
   }
+}
+
+$color: rgb(235,104,100);
+
+.delete {
+  &:hover {
+    color: $color;
+    text-decoration: none;
+    span {
+      opacity: 1;
+      color: darken($color, 5%);
+    }
+  }
+  span {
+    opacity: 0;
+    transition: opacity .25s ease-in-out;
+  }
+}
+
+
+.padding{
+  padding-left: 10px;
 }

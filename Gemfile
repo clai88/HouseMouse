@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+
+gem 'binding_of_caller'
+
 gem 'httparty'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
