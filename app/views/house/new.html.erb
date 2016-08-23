@@ -1,5 +1,7 @@
 <div class="searchpage">
 
+<%= fa_icon "quote-left", class: "text-muted pull-left"
+%>
 <blockquote>
   <p>Win today and we walk together forever</p>
   <small>FRED SHERO <cite title="Source Title">1974 Stanley Cup Finals</cite></small>
@@ -9,7 +11,9 @@
   <h1>search for house</h1>
 
   <%= bootstrap_form_for House.new,url: house_index_path do |f| %>
-  <%= f.text_field :street_address %>
+
+
+  <%= f.text_field :street_address, :autofocus => true %>
 
   <%= f.text_field :zip %>
 
@@ -19,5 +23,4 @@
   </button>
   <% end %>
 </div>
-
 </div>

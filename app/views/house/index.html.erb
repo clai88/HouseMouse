@@ -1,11 +1,10 @@
 <h1>Previously searched houses</h1>
 
-
 <table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>
-
+        <!-- star field -->
       </th>
       <th>
         Address
@@ -17,7 +16,7 @@
         Searched on
       </th>
       <th>
-        Description
+        Notes
       </th>
       <th>
         Delete
@@ -25,35 +24,35 @@
     </tr>
   </thead>
   <tbody>
-    <% for i in (0...@current_user_houses.length) %>
+    <% @user_houses.each do |user_house|%>
     <tr>
       <td>
-        <% if @current_user_houses[i].starred %>
-        <%= link_to house_star_path(current_user.id,@houses[i].id), method: :patch, class: "delete" do %>
+        <% if user_house.starred %>
+        <%= link_to house_star_path(current_user.id, user_house.house_id), method: :patch, class: "delete" do %>
         <%= fa_icon("star") %>
         <% end %>
         <% else %>
-        <%= link_to house_star_path(current_user.id,@houses[i].id), method: :patch, class: "delete" do %>
+        <%= link_to house_star_path(current_user.id, user_house.house_id), method: :patch, class: "delete" do %>
         <%= fa_icon("star-o") %>
         <% end %>
         <% end %>
       </td>
       <td>
-        <%= link_to @houses[i].street_address, house_path(@houses[i].id) %>
+        <%= link_to user_house.house.street_address, house_path(user_house.house_id) %>
       </td>
       <td>
-        <%= @houses[i].zip %>
+        <%= user_house.house.zip %>
       </td>
       <td>
-        <%= @houses[i].created_at.to_formatted_s(:long_ordinal).split(" ")[0..2].join(" ") %>
+        <%= user_house.house.created_at.to_formatted_s(:long_ordinal).split(" ")[0..2].join(" ") %>
       </td>
       <td>
-        <%= bootstrap_form_for @current_user_houses[i],url: house_edit_path(current_user.id,@current_user_houses[i].id) do |f| %>
+        <%= bootstrap_form_for user_house, url: house_edit_path(current_user.id, user_house.id) do |f| %>
           <%= f.text_field :description, hide_label: true, placeholder: "what a quaint little cottage." %>
         <% end %>
       </td>
       <td>
-        <%= link_to house_destroy_path(current_user.id,@houses[i].id), method: :delete, class: "delete" do %>
+        <%= link_to house_destroy_path(current_user.id, user_house.house.id), method: :delete, class: "delete" do %>
         <%= fa_icon("trash-o") %> <span>delete</span>
         <% end %>
       </td>
@@ -61,4 +60,19 @@
     <% end %>
   </tbody>
 </table>
-<hr>
+
+<%= paginate @user_houses %>
+
+<br>
+
+<!-- <ul class="pagination pagination-sm">
+  <li class="disabled"><a href="#">&laquo;</a></li>
+  <li class="active"><a href="#">1</a></li>
+  <li><a href="#">2</a></li>
+  <li><a href="#">3</a></li>
+  <li><a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li><a href="#">&raquo;</a></li>
+</ul>
+
+<hr> -->

@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
-
-
+  
   resources :house
   delete '/userhouse/:user_id/:house_id/destroy' => 'house#destroy_search', as: 'house_destroy'
 

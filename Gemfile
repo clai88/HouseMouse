@@ -1,14 +1,23 @@
 source 'https://rubygems.org'
 
+#fake data
+require 'ffaker'
 
-gem 'binding_of_caller'
+#tests
+gem 'rspec-rails'
 
+#time to party
 gem 'httparty'
+
+#login
 gem 'devise'
+
+#paginator
+gem 'kaminari'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -36,13 +45,15 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap_form'
 
+#make stuff look beautiful
 gem "font-awesome-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  gem 'pry-byebug', platform: :mri
   gem 'pry-rails'
   gem 'better_errors'
+  gem 'binding_of_caller'
   # gem 'quiet_assets', github: "evrone/quiet_assets"
 end
 

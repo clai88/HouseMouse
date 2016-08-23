@@ -27,7 +27,10 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <% if user_signed_in? %>
-            <li class="active"><a href=<%= house_index_path %>>My houses <span class="sr-only">(current)</span></a></li>
+            <% hCount = UserHouse.where(user_id: current_user.id).length %>
+            <li class="active"><a href=<%= house_index_path %>>My houses <span class="badge"><%= hCount %></span></a></li>
+
+
             <% else %>
             <li class="disabled"><a href="#">My houses <span class="sr-only">(current)</span></a></li>
 

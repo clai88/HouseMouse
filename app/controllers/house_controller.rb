@@ -1,37 +1,42 @@
 class HouseController < ApplicationController
   def index
-    @current_user_houses = UserHouse.where(user_id: current_user.id)
+    # @current_user_houses = UserHouse.where(user_id: current_user.id)
+    #
+    # @houses = []
+    # @current_user_houses.each do |user_house|
+    #   @houses << House.find_by(id: user_house.house_id)
+    # end
 
-    @houses = []
-    @current_user_houses.each do |user_house|
-      @houses << House.find_by(id: user_house.house_id)
-    end
+
+    @page = params[:page].to_i
+    @user_houses = current_user.user_houses.page(@page).per(7)
   end
 
   def create
-    house_params["street_address"].downcase!
-    @house = House.new(house_params)
+    house_params["street_address"].downcase!.strip!
 
-    same_house = House.find_by(street_address: house_params["street_address"])
-    if same_house
-      if user_signed_in? && @house.valid?
-        UserHouse.create(user_id: current_user.id, house_id: same_house.id) if UserHouse.find_by(user_id: current_user.id, house_id: same_house.id).nil?
-        redirect_to house_path(same_house.id)
-      elsif !user_signed_in? && @house.valid?
-        redirect_to house_path(same_house.id)
-      else
-        :new
-      end
-    else #new house
-      if user_signed_in? && @house.save
-        UserHouse.create(user_id: current_user.id, house_id: @house.id) if UserHouse.find_by(user_id: current_user.id, house_id: same_house.id).nil?
-        redirect_to house_path(@house.id)
-      elsif !user_signed_in? && @house.save
-        redirect_to house_path(@house.id)
-      else
-        :new
-      end
+    @house = House.where(house_params).first_or_initialize
+    binding.pry
+    if user_signed_in? && @house.save
+      UserHouse.create(user_id: current_user.id, house_id: @house.id)
+      redirect_to house_path(@house.id)
+    elsif !user_signed_in? && @house.valid?
+      redirect_to house_path(@house.id)
+    else
+      render :new
     end
+
+
+    # else #new house
+    #   if user_signed_in? && @house.save
+    #     UserHouse.create(user_id: current_user.id, house_id: @house.id) if UserHouse.find_by(user_id: current_user.id, house_id: @house.id).nil?
+    #     redirect_to house_path(@house.id)
+    #   elsif !user_signed_in? && @house.save
+    #     redirect_to house_path(@house.id)
+    #   else
+    #     :new
+    #   end
+    # end
   end
 
   def search
@@ -81,6 +86,6 @@ class HouseController < ApplicationController
 
 
   private def house_params
-    params.require("house").permit(:zpid, :street_address, :zip, :city_state)
+    params.require("house").permit(:street_address, :zip)
   end
 end
