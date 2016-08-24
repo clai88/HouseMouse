@@ -42,11 +42,9 @@
 
 <div class="col-lg-2">
   <h3>Logout</h3>
-  <button class="btn btn-primary">
-    <span class="font-color:white">
-    </span>
-  </button>
-  <%= link_to fa_icon("sign-out x") + "  Log Out", destroy_user_session_path, method: :delete %>
+
+    <%= button_to fa_icon("sign-out x") + "  Log Out", destroy_user_session_path, method: :delete %>
+
 
   <h3>Unhappy?</h3>
 

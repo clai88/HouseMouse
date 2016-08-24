@@ -48,11 +48,12 @@
             <% if user_signed_in? %>
             <li><a href="#">Welcome, <%= current_user.email.split("@")[0] %>!</a></li>
 
-            <li><a href= <%= edit_user_registration_path %> > Your Account <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href= <%= edit_user_registration_path %> > Your Account <span class="sr-only">(current)</span></a></li>
             <% else %>
             <li>
-              <span style="color:white">
-              <%= link_to fa_icon("sign-in x") + "  Sign in", new_user_session_path %>
+              <li><a href= <%= new_user_session_path %> > Sign In <span class="sr-only">(current)</span></a></li>
+
+                <%# link_to fa_icon("sign-in x") + "  Sign in", new_user_session_path %>
               </span>
             </li>
             <% end %>

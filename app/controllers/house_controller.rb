@@ -1,8 +1,8 @@
 class HouseController < ApplicationController
   def index
     @page = params[:page].to_i
-    # current_user.user_houses
-    @user_houses = current_user.user_houses.page(@page).per(5)
+    houses = current_user.user_houses.order(created_at: :desc)
+    @user_houses = houses.page(@page).per(5)
   end
 
   def create
@@ -17,18 +17,6 @@ class HouseController < ApplicationController
     else
       render :new
     end
-
-
-    # else #new house
-    #   if user_signed_in? && @house.save
-    #     UserHouse.create(user_id: current_user.id, house_id: @house.id) if UserHouse.find_by(user_id: current_user.id, house_id: @house.id).nil?
-    #     redirect_to house_path(@house.id)
-    #   elsif !user_signed_in? && @house.save
-    #     redirect_to house_path(@house.id)
-    #   else
-    #     :new
-    #   end
-    # end
   end
 
   def search
