@@ -1,4 +1,4 @@
-<div class="col-md-10 col-lg-7">
+<div class="col-md-10 col-lg-7 house-info">
 
 <p style="font-size:24px">
 <%= @params["address"]["street"] %>
@@ -8,7 +8,6 @@
 <%= @params["address"]["state"] %>
 <br>
 </p>
-
 
 <ul>
 <li>
@@ -21,20 +20,28 @@ Current Price = <%= @params["zestimate"]["amount"]["__content__"] %> USD
 <li>Last Sold Date = <%= @params["lastSoldDate"] %></li>
 <li>Last Sold Price = <%= @params["lastSoldPrice"]["__content__"] %> USD</li>
 </ul>
+
+<button class="btn btn-primary">
+</button>
+
 <%= link_to "View mortgage info", house_mortgage_info_path(params["id"]) %>
+
 </div>
 
 
-<div class="col-md-7 col-lg-5">
+<div class="col-md-7 col-lg-5 walkscore">
 
-WalkScore = <%= @walk_score[0] %>
+<p style="font-size:24px">
+  WalkScore = <%= @walk_score[0] %>
+  <br>
+  <%= @walk_score[1] %>
+</p>
 
 <br>
 
-description = <%= @walk_score[1] %>
 
 
-<table>
+<table class="table table-striped table-hover">
   <tbody>
     <tr>
       <td>90&ndash;100</td>

@@ -80,3 +80,21 @@ $color: rgb(235,104,100);
   width: 500px;
   margin: 0 auto;
 }
+
+.popup {
+  width: 200%;
+  font-size: 13px;
+  padding-top: 20px;
+  padding-left: 15px;
+  // text-shadow: 0px 0px 5px pink;
+}
+
+.walkscore, .house-info{
+  width: 50%;
+  box-sizing: border-box;
+  float: left;
+}
+
+ul{
+  font-size: 20px;
+}

@@ -64,6 +64,10 @@ class HouseController < ApplicationController
     redirect_to house_index_path
   end
 
+  def description
+    binding.pry
+  end
+
 
   private def house_params
     params.require("house").permit(:street_address, :zip)

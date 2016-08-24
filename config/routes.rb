@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  
+
   resources :house
   delete '/userhouse/:user_id/:house_id/destroy' => 'house#destroy_search', as: 'house_destroy'
 
   patch '/userhouse/:user_id/:house_id/star' => 'house#star', as: 'house_star'
 
-  patch '/userhouse/:user_id/:house_id/' => 'house#star', as: 'house_edit'
+  patch '/userhouse/:user_id/:house_id/' => 'house#description', as: 'house_edit'
 
   get '/house/:id/mortgage' => 'house#mortgage_info', as: 'house_mortgage_info'
 

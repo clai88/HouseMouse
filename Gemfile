@@ -1,10 +1,6 @@
 source 'https://rubygems.org'
 
-#fake data
-require 'ffaker'
 
-#tests
-gem 'rspec-rails'
 
 #time to party
 gem 'httparty'
@@ -16,8 +12,8 @@ gem 'devise'
 gem 'kaminari'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# Use postgres as the database for Active Record
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -48,12 +44,24 @@ gem 'bootstrap_form'
 #make stuff look beautiful
 gem "font-awesome-rails"
 
+group :test do
+  #selenium integration testing
+  gem 'capybara'
+
+  #fake data
+  require 'ffaker'
+
+
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'pry-byebug', platform: :mri
   gem 'pry-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+  #tests
+  gem 'rspec-rails'
   # gem 'quiet_assets', github: "evrone/quiet_assets"
 end
 
@@ -70,6 +78,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :production do
-  gem 'pg'
   gem "rails_12factor"
 end

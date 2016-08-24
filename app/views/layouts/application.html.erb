@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HouseHouse</title>
+  <title>HouseMouse</title>
   <%= csrf_meta_tags %>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,7 +10,7 @@
 </head>
 <main>
 
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -20,8 +20,8 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">
-          <%= fa_icon("cloud") %>
-          Pillow</a>
+          <%= fa_icon("pied-piper") %>
+          House Mouse</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -30,18 +30,24 @@
             <% hCount = UserHouse.where(user_id: current_user.id).length %>
             <li class="active"><a href=<%= house_index_path %>>My houses <span class="badge"><%= hCount %></span></a></li>
 
-
             <% else %>
-            <li class="disabled"><a href="#">My houses <span class="sr-only">(current)</span></a></li>
+            <li class="disabled"><a>My houses</a></li>
+
+            <div class="popup">
+              <p id="hi">
+                Please sign in to view your houses
+              </p>
+            </div>
 
             <script type="text/javascript">
 
-            $(document).ready(function() {
-              $("disabled").on("hover", function(){
-                $("body").css("background-color", '#663399');
-              });
-            });
+            $(".popup").hide();
+
+            $(".disabled")
+              .mouseenter(function(){$(".popup").show();})
+              .mouseleave(function(){$(".popup").hide();});
             </script>
+
             <% end %>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -52,35 +58,47 @@
             <% else %>
             <li>
               <li><a href= <%= new_user_session_path %> > Sign In <span class="sr-only">(current)</span></a></li>
-
-                <%# link_to fa_icon("sign-in x") + "  Sign in", new_user_session_path %>
-              </span>
-            </li>
-            <% end %>
-
-          </ul>
-        </div>
+            </span>
+          </li>
+          <% end %>
+        </ul>
       </div>
-    </nav>
-
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <div class="padding">
-      <%= yield %>
     </div>
+  </nav>
 
-
-    <div class="container">
-      <footer class="footer navbar-fixed-bottom">
-        <aside id="media">
-          <%= link_to fa_icon("twitter 2x"), "https://twitter.com/houseinvestor8", target: 'blank'  %>
-          <%= link_to fa_icon("instagram 2x"), "https://www.instagram.com/HouseInvestor/?hl=en", target: 'blank' %>
-          <%= link_to fa_icon("github 2x"), "https://github.com/clai88/House-Investor", target: 'blank' %>
-        </aside>
-      </footer>
+  <% if notice %>
+  <p class="notice">
+    <div class="alert alert-dismissible alert-info">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong><%= notice %></strong>
     </div>
-  </body>
+  </p>
+  <% end %>
+
+  <% if alert %>
+  <p class="alert">
+    <div class="alert alert-dismissible alert-danger">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong><%= alert %></strong>
+    </div>
+  </p>
+  <% end %>
+
+
+  <div class="padding">
+    <%= yield %>
+  </div>
+
+
+  <div class="container">
+    <footer class="footer navbar-fixed-bottom">
+      <aside id="media">
+        <%= link_to fa_icon("twitter 2x"), "https://twitter.com/houseinvestor8", target: 'blank'  %>
+        <%= link_to fa_icon("instagram 2x"), "https://www.instagram.com/HouseInvestor/?hl=en", target: 'blank' %>
+        <%= link_to fa_icon("github 2x"), "https://github.com/clai88/House-Investor", target: 'blank' %>
+      </aside>
+    </footer>
+  </div>
+</body>
 </main>
 </html>
