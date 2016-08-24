@@ -1,22 +1,14 @@
 class HouseController < ApplicationController
   def index
-    # @current_user_houses = UserHouse.where(user_id: current_user.id)
-    #
-    # @houses = []
-    # @current_user_houses.each do |user_house|
-    #   @houses << House.find_by(id: user_house.house_id)
-    # end
-
-
     @page = params[:page].to_i
-    @user_houses = current_user.user_houses.page(@page).per(7)
+    # current_user.user_houses
+    @user_houses = current_user.user_houses.page(@page).per(5)
   end
 
   def create
     house_params["street_address"].downcase!.strip!
 
     @house = House.where(house_params).first_or_initialize
-    binding.pry
     if user_signed_in? && @house.save
       UserHouse.create(user_id: current_user.id, house_id: @house.id)
       redirect_to house_path(@house.id)

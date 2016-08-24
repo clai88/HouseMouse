@@ -7,15 +7,16 @@
   <small>FRED SHERO <cite title="Source Title">1974 Stanley Cup Finals</cite></small>
 </blockquote>
 
+
 <div class="col-lg-7">
   <h1>search for house</h1>
 
   <%= bootstrap_form_for House.new,url: house_index_path do |f| %>
 
 
-  <%= f.text_field :street_address, :autofocus => true %>
+  <%= f.text_field :street_address, :autofocus => true, placeholder: "209 West Bald Hill St" %>
 
-  <%= f.text_field :zip %>
+  <%= f.text_field :zip, placeholder: 55068 %>
 
   <button class="btn btn-primary btn-block">
     <%= fa_icon("search") %>

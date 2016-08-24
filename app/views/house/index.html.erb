@@ -44,11 +44,11 @@
         <%= user_house.house.zip %>
       </td>
       <td>
-        <%= user_house.house.created_at.to_formatted_s(:long_ordinal).split(" ")[0..2].join(" ") %>
+        <%= user_house.created_at.to_formatted_s(:long_ordinal).split(" ")[0..2].join(" ") %>
       </td>
       <td>
         <%= bootstrap_form_for user_house, url: house_edit_path(current_user.id, user_house.id) do |f| %>
-          <%= f.text_field :description, hide_label: true, placeholder: "what a quaint little cottage." %>
+        <%= f.text_field :description, hide_label: true, placeholder: "what a quaint little cottage." %>
         <% end %>
       </td>
       <td>
@@ -60,19 +60,18 @@
     <% end %>
   </tbody>
 </table>
-
 <%= paginate @user_houses %>
-
+<hr>
 <br>
 
 <!-- <ul class="pagination pagination-sm">
-  <li class="disabled"><a href="#">&laquo;</a></li>
-  <li class="active"><a href="#">1</a></li>
-  <li><a href="#">2</a></li>
-  <li><a href="#">3</a></li>
-  <li><a href="#">4</a></li>
-  <li><a href="#">5</a></li>
-  <li><a href="#">&raquo;</a></li>
+<li class="disabled"><a href="#">&laquo;</a></li>
+<li class="active"><a href="#">1</a></li>
+<li><a href="#">2</a></li>
+<li><a href="#">3</a></li>
+<li><a href="#">4</a></li>
+<li><a href="#">5</a></li>
+<li><a href="#">&raquo;</a></li>
 </ul>
 
 <hr> -->

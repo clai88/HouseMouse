@@ -10,7 +10,7 @@
 </head>
 <main>
 
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -20,8 +20,8 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="/">
-          <%= fa_icon "home" %>
-          House Investor</a>
+          <%= fa_icon("cloud") %>
+          Pillow</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -37,37 +37,23 @@
             <script type="text/javascript">
 
             $(document).ready(function() {
-              $("displaymessage").on("click", function(){
+              $("disabled").on("hover", function(){
                 $("body").css("background-color", '#663399');
               });
             });
             </script>
             <% end %>
-
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
-            Signed in as <%= link_to current_user.email.split("@")[0], edit_user_registration_path %> |
+            <li><a href="#">Welcome, <%= current_user.email.split("@")[0] %>!</a></li>
 
-            <span style="font-size:15px">
-              <%= link_to fa_icon("sign-out x") + "  Log Out", destroy_user_session_path, method: :delete %>
-            </span>
-
+            <li><a href= <%= edit_user_registration_path %> > Your Account <span class="sr-only">(current)</span></a></li>
             <% else %>
             <li>
+              <span style="color:white">
               <%= link_to fa_icon("sign-in x") + "  Sign in", new_user_session_path %>
+              </span>
             </li>
             <% end %>
 
