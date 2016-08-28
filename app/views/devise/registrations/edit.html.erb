@@ -41,24 +41,15 @@
 
 
 <div class="col-lg-2">
-  <h3>Logout</h3>
-    <button class="btn btn-primary">
-      Log Out
-    </button>
-
-    <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-primary" %>
+  <h3>
+  <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-primary btn-md" %>
+  </h3>
 
 
   <h3>Unhappy?</h3>
 
-  <button class="btn btn-primary">
-    Cancel my account
-  </button>
 
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-  Submit
-
-
+  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-primary btn-md" %>
 
 
   <br>

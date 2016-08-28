@@ -47,7 +47,7 @@
         <%= user_house.created_at.to_formatted_s(:long_ordinal).split(" ")[0..2].join(" ") %>
       </td>
       <td>
-        <%= bootstrap_form_for user_house, url: house_edit_path(current_user.id, user_house.id) do |f| %>
+        <%= bootstrap_form_for user_house, url: house_edit_path(current_user.id, user_house.house_id) do |f| %>
         <%= f.text_field :description, hide_label: true, placeholder: "what a quaint little cottage." %>
         <% end %>
       </td>

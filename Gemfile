@@ -63,6 +63,8 @@ group :development, :test do
   #tests
   gem 'rspec-rails'
   # gem 'quiet_assets', github: "evrone/quiet_assets"
+
+  gem 'selenium-webdriver'
 end
 
 group :development do

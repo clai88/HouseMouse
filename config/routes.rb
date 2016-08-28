@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   patch '/userhouse/:user_id/:house_id/star' => 'house#star', as: 'house_star'
 
-  patch '/userhouse/:user_id/:house_id/' => 'house#description', as: 'house_edit'
+  patch '/userhouse/:user_id/:house_id/description' => 'house#description', as: 'house_edit'
 
   get '/house/:id/mortgage' => 'house#mortgage_info', as: 'house_mortgage_info'
 

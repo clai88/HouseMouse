@@ -65,11 +65,17 @@ class HouseController < ApplicationController
   end
 
   def description
-    binding.pry
+    house = UserHouse.find_by(user_id: params["user_id"], house_id: params["house_id"])
+    house.update(user_house_params)
+    redirect_to house_index_path
   end
 
 
   private def house_params
     params.require("house").permit(:street_address, :zip)
+  end
+
+  private def user_house_params
+    params.require("user_house").permit(:description)
   end
 end
