@@ -11,18 +11,17 @@
 
 <ul>
 <li>
-Current Price = <%= @params["zestimate"]["amount"]["__content__"] %> USD
+Current Price = <%= number_with_delimiter(@params["zestimate"]["amount"]["__content__"]) %> USD
 </li>
 
 <li>Year Built = <%= @params["yearBuilt"] %></li>
 <li>Finished Square Feet = <%= @params["finishedSqFt"] %></li>
 <li>Bathrooms = <%= @params["bathrooms"] %></li>
 <% if @params["lastSoldPrice"] == [] %>
-<li>Last Sold Price = <%= @params["lastSoldPrice"]["__content__"] %> USD</li>
-<li>Last Sold Date = <%= @params["lastSoldDate"] %></li>
-<% else %>
 <li>Last sold price and date not available</li>
-
+<% else %>
+<li>Last Sold Price = <%= number_with_delimiter(@params["lastSoldPrice"]["__content__"]) %> USD</li>
+<li>Last Sold Date = <%= @params["lastSoldDate"] %></li>
 <% end %>
 </ul>
 
