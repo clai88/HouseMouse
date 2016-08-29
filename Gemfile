@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'binding_of_caller'
 
 #time to party
 gem 'httparty'
