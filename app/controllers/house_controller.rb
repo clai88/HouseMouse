@@ -6,7 +6,8 @@ class HouseController < ApplicationController
   end
 
   def create
-    house_params["street_address"].downcase!.strip!
+    a = house_params["street_address"]
+    a.upcase.downcase!.strip!
 
     @house = House.where(house_params).first_or_initialize
     if user_signed_in? && @house.save

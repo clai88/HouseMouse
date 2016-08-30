@@ -47,11 +47,6 @@ gem "font-awesome-rails"
 group :test do
   #selenium integration testing
   gem 'capybara'
-
-  #fake data
-  require 'ffaker'
-
-
 end
 
 group :development, :test do
