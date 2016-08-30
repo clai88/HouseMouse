@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.2.4'
 gem 'binding_of_caller'
 
 #time to party
