@@ -13,7 +13,7 @@ class HouseController < ApplicationController
     if user_signed_in? && @house.save
       UserHouse.create(user_id: current_user.id, house_id: @house.id)
       redirect_to house_path(@house.id)
-    elsif !user_signed_in? && @house.valid?
+    elsif !user_signed_in? && @house.save
       redirect_to house_path(@house.id)
     else
       render :new
