@@ -26,9 +26,7 @@ Current Price = <%= number_with_delimiter(@params["zestimate"]["amount"]["__cont
 </ul>
 
 <!-- mortgage page. still need to make -->
-<button class="btn btn-primary">
-</button>
-<%= link_to "View mortgage info", house_mortgage_info_path(params["id"]) %>
+<%= link_to "View mortgage info", house_mortgage_info_path(params["id"]), class: "btn btn-primary" %>
 </div>
 
 <div class="col-md-7 col-lg-5 walkscore">

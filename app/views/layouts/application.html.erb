@@ -32,7 +32,6 @@
 
             <% else %>
             <li class="disabled"><a>My houses</a></li>
-
             <div class="popup">
               <p id="hi">
                 Please sign in to view your houses
@@ -44,17 +43,27 @@
             $(".popup").hide();
 
             $(".disabled")
-              .mouseenter(function(){$(".popup").show();})
-              .mouseleave(function(){$(".popup").hide();});
+            .mouseenter(function(){$(".popup").show();})
+            .mouseleave(function(){$(".popup").hide();});
             </script>
 
             <% end %>
           </ul>
+
+
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
             <li><a href="#">Welcome, <%= current_user.email.split("@")[0] %>!</a></li>
 
-            <li class="active"><a href= <%= edit_user_registration_path %> > Your Account <span class="sr-only">(current)</span></a></li>
+            <li class="dropdown active">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Your Account<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href=<%= edit_user_registration_path %>>Edit Your Account</a></li>
+                <li class="divider"></li>
+
+                <li>  <%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </li>
             <% else %>
             <li>
               <li><a href= <%= new_user_session_path %> > Sign In <span class="sr-only">(current)</span></a></li>
@@ -88,7 +97,6 @@
   <div class="padding">
     <%= yield %>
   </div>
-
 
   <div class="container">
     <footer class="footer navbar-fixed-bottom">

@@ -1,8 +1,8 @@
 class HouseController < ApplicationController
   def index
     @page = params[:page].to_i
-    houses = current_user.user_houses.order(created_at: :desc)
-    @user_houses = houses.page(@page).per(5)
+    @houses = current_user.user_houses.order(created_at: :desc)
+    @user_houses = @houses.page(@page).per(5)
   end
 
   def create
