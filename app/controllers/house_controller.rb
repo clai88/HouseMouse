@@ -6,10 +6,10 @@ class HouseController < ApplicationController
   end
 
   def create
-    a = house_params["street_address"]
-    a.upcase.downcase!.strip!
-
-    @house = House.where(house_params).first_or_initialize
+    address = house_params["street_address"].upcase.downcase!
+    address = address.strip
+    zip = house_params["zip"]
+    @house = House.where(street_address: address,zip: zip).first_or_initialize
     if user_signed_in? && @house.save
       UserHouse.create(user_id: current_user.id, house_id: @house.id)
       redirect_to house_path(@house.id)
