@@ -38,7 +38,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'postmark-rails'
 gem 'bootstrap_form'
 
 #make stuff look beautiful
