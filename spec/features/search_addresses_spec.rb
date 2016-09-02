@@ -6,7 +6,7 @@ feature "SearchAddresses", :type => :feature, :js => true do
 
     fill_in('Street address', with: '10823 Maplecrest lane')
     fill_in('Zip', with: '20854')
-    sleep 2
+    # sleep 2
     click_button('Submit')
 
 
@@ -29,8 +29,7 @@ feature "SignUpUser", :type => :feature, :js => true do
     fill_in('Password', with: 'clai88')
     fill_in('Password confirmation', with: 'clai88')
 
-    assert_difference "Company.count" do
-      click_button('Sign Up')
-    end
+    sleep 1
+    click_button('Sign Up')
   end
 end
