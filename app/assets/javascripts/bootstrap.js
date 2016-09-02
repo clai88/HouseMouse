@@ -7,7 +7,7 @@
 <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'>
 </script>
 
-<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+// <script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 
 if (typeof jQuery === 'undefined') {
   throw new Error('Bootstrap\'s JavaScript requires jQuery')
