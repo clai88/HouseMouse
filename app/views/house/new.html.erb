@@ -10,17 +10,16 @@
 <div class="col-lg-8">
   <h1>search for house</h1>
 
-  <%= bootstrap_form_for House.new,url: house_index_path do |f| %>
+  <%= bootstrap_form_for @house, url: house_index_path do |f| %>
 
+    <%= f.text_field :street_address, :autofocus => true, placeholder: "10823 Maplecrest Lane" %>
 
-  <%= f.text_field :street_address, :autofocus => true, placeholder: "10823 Maplecrest Lane" %>
+    <%= f.text_field :zip, placeholder: 20854 %>
 
-  <%= f.text_field :zip, placeholder: 20854 %>
-
-  <button class="btn btn-primary btn-block">
-    <%= fa_icon("search") %>
-    Submit
-  </button>
+    <button class="btn btn-primary btn-block">
+      <%= fa_icon("search") %>
+      Submit
+    </button>
   <% end %>
 </div>
 </div>

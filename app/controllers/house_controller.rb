@@ -6,8 +6,7 @@ class HouseController < ApplicationController
   end
 
   def create
-    address = house_params["street_address"].upcase.downcase!
-    address = address.strip
+    address = house_params["street_address"].downcase.strip
     zip = house_params["zip"]
     @house = House.where(street_address: address,zip: zip).first_or_initialize
     if user_signed_in? && @house.save
@@ -20,8 +19,8 @@ class HouseController < ApplicationController
     end
   end
 
-  def search
-
+  def new
+    @house = House.new
   end
 
   def show
