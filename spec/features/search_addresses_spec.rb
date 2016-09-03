@@ -29,7 +29,8 @@ feature "SignUpUser", :type => :feature, :js => true do
     fill_in('Password', with: 'clai88')
     fill_in('Password confirmation', with: 'clai88')
 
-    sleep 1
     click_button('Sign Up')
+
+    assert page.has_content?("Email has already been taken")
   end
 end

@@ -1,5 +1,5 @@
-<div class="col-md-10 col-lg-7 house-info">
-
+<div class="col-md-10 col-lg-7 col-sm-12 ">
+<!-- house-info -->
 <p style="font-size:24px">
 <%= @params["address"]["street"] %>
 
@@ -29,7 +29,8 @@ Current Price = <%= number_with_delimiter(@params["zestimate"]["amount"]["__cont
 <%= link_to "View mortgage info", house_mortgage_info_path(params["id"]), class: "btn btn-primary" %>
 </div>
 
-<div class="col-md-7 col-lg-5 walkscore">
+<div class="col-md-7 col-lg-5 ">
+  <!-- walkscore -->
 
 <p style="font-size:24px">
   WalkScore = <%= @walk_score[0] %>

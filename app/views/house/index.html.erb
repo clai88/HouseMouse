@@ -46,7 +46,7 @@
         <% end %>
       </td>
       <td>
-        <%= link_to user_house.house.street_address, house_path(user_house.house_id) %>
+        <%= link_to user_house.house.street_address.split(" ").map(&:capitalize).join(" "), house_path(user_house.house_id) %>
       </td>
       <td>
         <%= user_house.house.zip %>

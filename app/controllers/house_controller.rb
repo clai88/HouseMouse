@@ -1,7 +1,7 @@
 class HouseController < ApplicationController
   def index
     @page = params[:page].to_i
-    @houses = current_user.user_houses.order(updated_at: :desc)
+    @houses = current_user.user_houses.order(created_at: :desc)
     @user_houses = @houses.page(@page).per(5)
   end
 
@@ -67,6 +67,7 @@ class HouseController < ApplicationController
   def description
     house = UserHouse.find_by(user_id: params["user_id"], house_id: params["house_id"])
     house.update(user_house_params)
+    flash[:notice] = "#{house.house.street_address.split.map(&:capitalize).join(' ')} successfuly updated"
     redirect_to house_index_path
   end
 
