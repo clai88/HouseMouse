@@ -1,7 +1,7 @@
 class HouseController < ApplicationController
   def index
     @page = params[:page].to_i
-    @houses = current_user.user_houses.order(created_at: :desc)
+    @houses = current_user.user_houses.order(updated_at: :desc)
     @user_houses = @houses.page(@page).per(5)
   end
 
@@ -10,7 +10,7 @@ class HouseController < ApplicationController
     zip = house_params["zip"]
     @house = House.where(street_address: address,zip: zip).first_or_initialize
     if user_signed_in? && @house.save
-      UserHouse.create(user_id: current_user.id, house_id: @house.id)
+      house = UserHouse.create(user_id: current_user.id, house_id: @house.id)
       redirect_to house_path(@house.id)
     elsif !user_signed_in? && @house.save
       redirect_to house_path(@house.id)
