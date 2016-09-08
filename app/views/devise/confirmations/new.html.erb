@@ -1,6 +1,6 @@
 <h2>Resend confirmation instructions</h2>
 
-<div class="col-lg-2 col-md-5">
+<div class="col-lg-5 col-md-7">
 
 <%= bootstrap_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
 <%= devise_error_messages! %>
@@ -10,7 +10,6 @@
 </div>
 
   <%= f.submit "Resend confirmation instructions",class: "btn btn-primary btn-block" %>
-  <!-- fix button to fit theme -->
 
   <%# button_to "Resend confirmation instructions", f.submit, class: "btn btn-primary btn-md" %>
 
