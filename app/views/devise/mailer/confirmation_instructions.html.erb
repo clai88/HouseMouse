@@ -76,8 +76,9 @@
 
                 <%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %>
 
-
+                <a href= <%= confirmation_url(@resource, confirmation_token: @token) %>>
                   <img src="http://i.imgur.com/IdyzFk7.jpg" height="200" width="225" align="middle" alt="HouseMouse logo" />
+                </a>
 
                 <br>
 
