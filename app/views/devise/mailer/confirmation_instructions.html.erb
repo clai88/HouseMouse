@@ -8,7 +8,7 @@
 </head>
 <body>
   <center>
-    <table width="800" background="#FFFFFF" style="text-align:left;" cellpadding="0" cellspacing="0">
+    <table width="600" background="#FFFFFF" style="text-align:left;" cellpadding="0" cellspacing="0">
       <tr>
         <td height="18" width="31" style="border-bottom:1px solid #e4e4e4;">
           <div style="line-height: 0px; font-size: 1px; position: absolute;">&nbsp;</div>
@@ -68,93 +68,46 @@
           <br />
           <table cellpadding="0" cellspacing="0">
             <tr>
-              <td width="15"><div style="line-height: 0px; font-size: 1px; position: absolute;">&nbsp;</div>
-              </td>
-              <td width="420" style="padding-right:10px; font-family:Trebuchet MS, Verdana, Arial; font-size:12px;" valign="top">
+              <td width="600" style="padding-right:10px; font-family:Trebuchet MS, Verdana, Arial; font-size:12px;" valign="top", align="center">
                 <span style="font-family:Trebuchet MS, Verdana, Arial; font-size:17px; font-weight:bold;">Welcome <%= @email.split("@").first %>!</span>
                 <br />
-                <p>Once you click your confirmation email, get ready to access all the goodies in HouseMouse</p>
+                <p>Click the link below to confirm your email, and get ready to access all the goodies in HouseMouse</p>
                 <br />
 
-                <img src="http://i.imgur.com/IdyzFk7.jpg" height="200" width="225" align="middle" alt="HouseMouse logo" />
+                <%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %>
 
 
-                <p>In the meantime, you can <a href="housemouse.herokuapp.com">return to my website</a> to continue browsing.</p>
+                  <img src="http://i.imgur.com/IdyzFk7.jpg" height="200" width="225" align="middle" alt="HouseMouse logo" />
+
+                <br>
 
                 Sincerely,<br/>
                 Christopher Lai<br/>
 
                 HouseMouse Senior Back-End dev<br/>
                 <br/>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
 
-                This welcome email was sent to <%= @email %> because you recently signed up for occasional messages from me at <a href="housemouse.herokuapp.com">HouseMouse</a>.
 
-              </td>
-              <td style="border-left:1px solid #e4e4e4; padding-left:15px;" valign="top">
-
-                <!--RIGHT COLUMN FIRST BOX-->
-                <table width="100%" cellpadding="0" cellspacing="0" style="border-bottom:1px solid #e4e4e4; font-family:Trebuchet MS, Verdana, Arial; font-size:12px;">
-                  <tr>
-                    <td>
-                      <div style="font-family:Trebuchet MS, Verdana, Arial; font-size:17px; font-weight:bold; padding-bottom:10px;">Confirm your email address here!</div>
-                      <p>To finish the registration process, please click this glorious link below <br><strong>
-                        <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
-                      </strong></p>
-                      <br />
-                    </td>
-                  </tr>
-                </table>
-
-                <!--RIGHT COLUMN SECOND BOX-->
-                <br />
-                <table width="100%" cellpadding="0" cellspacing="0" style="border-bottom:1px solid #e4e4e4; font-family:Trebuchet MS, Verdana, Arial; font-size:12px;">
-                  <tr>
-                    <td>
-                      <div style="font-family:Trebuchet MS, Verdana, Arial; font-size:17px; font-weight:bold; padding-bottom:10px;">Features: See what house mouse can do!</div>
-                        <ul>
-                          <li>unique website that allows you to look up addresses</li>
-                          <li>view important home information and walkscore</li>
-                          <li>view previous search results</li>
-                          <li>star, edit, and deleted previous results</li>
-                        </ul>
-                      <br />
-                    </td>
-                  </tr>
-                </table>
-
-                <!--RIGHT COLUMN THIRD BOX-->
-                <br />
-                <table cellpadding="0" width="100%" cellspacing="0" style="font-family:Trebuchet MS, Verdana, Arial; font-size:12px;">
-                  <tr>
-                    <td>
-                      <div style="font-family:Trebuchet MS, Verdana, Arial; font-size:17px; font-weight:bold; padding-bottom:10px;">Have any suggestions?</div>
-                      <p>I'd love to hear it! Just reply any time and let me know what features you would like to see included in HouseMouse.</p>
-                      <br />
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
+      <br />
+      <table cellpadding="0" style="border-top:1px solid #e4e4e4; text-align:center; font-family:Trebuchet MS, Verdana, Arial; font-size:12px;" cellspacing="0" width="600">
+        <tr>
+          <td height="2" style="border-bottom:1px solid #e4e4e4;">
+            <div style="line-height: 0px; font-size: 1px; position: absolute;">&nbsp;</div>
+          </td>
+        </tr>
+        <td style="font-family:Trebuchet MS, Verdana, Arial; font-size:12px;">
+          <span style="font-size:10">This welcome email was sent to <%= @email %> because you recently signed up for an account at <a href="housemouse.herokuapp.com">HouseMouse</a>.
+          </span>
+          <br />
+          <a href="#">Unsubscribe </a>
         </td>
       </tr>
     </table>
-
-
-    <br />
-    <table cellpadding="0" style="border-top:1px solid #e4e4e4; text-align:center; font-family:Trebuchet MS, Verdana, Arial; font-size:12px;" cellspacing="0" width="600">
-      <tr>
-        <td height="2" style="border-bottom:1px solid #e4e4e4;">
-          <div style="line-height: 0px; font-size: 1px; position: absolute;">&nbsp;</div>
-        </td>
-      </tr>
-      <td style="font-family:Trebuchet MS, Verdana, Arial; font-size:12px;">
-        <br />
-        clai88@umd.edu<br />
-        <a href="#">Unsubscribe </a>
-      </td>
-    </tr>
-  </table>
-</center>
+  </center>
 </body>
 </html>
