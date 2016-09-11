@@ -1,10 +1,6 @@
 Amazingly simple webapp that allows you to view important home information.
 
-```rb
-def hello
-  p "💩"
-end
-```
+![HouseMouse homepage](http://i.imgur.com/HMQcYyg.png)
 
 ## Getting started
 
@@ -14,7 +10,7 @@ To get started, simply visit [**housemouse**](https://housemouse.herokuapp.com/)
 
 If you wanted to modify the code and go through localhost, follow the instructions below
 
-1. Type the following command into command prompt:
+1. Type the following into command prompt:
 ```
 $ git clone git@github.com:clai88/HouseMouse.git
 ```
@@ -32,11 +28,11 @@ The format for generating paths and URL's is:
 ```rb
 get '/house/:id' => 'house#show', as: 'house'
 ```
-Alternatively, simply entering the box below will generate all CRUD routes.
+Alternatively, simply entering the line below will generate all CRUD routes.
 ```rb
 resources :house
 ```
-- In order to generate a new controller type:
+- In order to generate a new controller, type:
 ```
 $ bin/rails generate controller NAME [action action]
 ```
@@ -64,7 +60,7 @@ A list of your current tables and their columns can be found at `db/schema.rb`.
 If you edit the Gemfile, be sure to `bundle` afterwards
 
 
-4. To start your rails app, run:
+3. To start your rails app, run:
 ```
 bin/rails server
 ```
@@ -78,11 +74,11 @@ bin/rails s -p #anyport
 
 To be safe, please make sure the port is between 1024 and 65535
 
-5. To see your edits come to life, open your browser and enter
+4. To see your edits come to life, open your browser and enter
 ```http
 localhost:3000 (or whichever port you chose)
 ```
-6. Celebrate! You're on Rails!
+5. Celebrate! You're on Rails!
 
 ##Feature request
 HouseMouse currently only utilizes [zillow](http://www.zillow.com/howto/api/APIOverview.htm) and [walkscore's](https://www.walkscore.com/professional/api.php) api, but if you like to see more API's implemented, please contact me at clai88@gmail.com
