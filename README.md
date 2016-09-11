@@ -1,6 +1,6 @@
 Amazingly simple webapp that allows you to view important home information.
 
-![HouseMouse homepage](http://i.imgur.com/HMQcYyg.png)
+![HouseMouse homepage](http://i.imgur.com/CwrdiAx.png)
 
 ## Getting started
 
@@ -14,6 +14,7 @@ If you wanted to modify the code and go through localhost, follow the instructio
 ```
 $ git clone git@github.com:clai88/HouseMouse.git
 ```
+
 2. Run the command:
 ```
 $ bundle install
@@ -32,6 +33,7 @@ Alternatively, simply entering the line below will generate all CRUD routes.
 ```rb
 resources :house
 ```
+
 - In order to generate a new controller, type:
 ```
 $ bin/rails generate controller NAME [action action]
@@ -64,13 +66,11 @@ If you edit the Gemfile, be sure to `bundle` afterwards
 ```
 bin/rails server
 ```
-<br />
 
 By default, the rails app will start on port 3000, but you can modify this with the modifier
 ```
 bin/rails s -p #anyport
 ```
-<br />
 
 To be safe, please make sure the port is between 1024 and 65535
 
