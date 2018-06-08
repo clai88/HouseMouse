@@ -28,9 +28,9 @@ If you wanted to modify the code and go through localhost, follow the instructio
     Simply running `bundle` will also work
 
 3. Edit any part of the project you desire.
-<br />
+<br>
     - To modify the routes, open `config/routes.rb`
-    <br />
+    <br>
     The format for generating paths and URL's is:
       ```rb
       get '/house/:id' => 'house#show', as: 'house'
@@ -72,13 +72,13 @@ If you wanted to modify the code and go through localhost, follow the instructio
     ```
 5. Celebrate! You're on Rails!
 
-##TDO
+## TDO
 - [x] Search houses
 - [x] View previously searched houses
 - [x] Star, edit,and delete previously searched houses
 - [ ] View mortgage information for <del>most</del> all houses
 
-##Screenshots
+## Screenshots
 ![HouseMouse homepage](http://i.imgur.com/CwrdiAx.png)
 
 ![HouseMouse previously searched page](http://i.imgur.com/wVDZOOW.png)
