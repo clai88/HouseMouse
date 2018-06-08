@@ -48,10 +48,10 @@ If you wanted to modify the code and go through localhost, follow the instructio
     - To edit the models, views, and controllers, visit the `app/` directory <br />
 
     >After editing the databases (generating new model or migrations), run the command `$ rake db:migrate`, which will run single migrations that have not been run yet.  
-    <bbr />
+    <br>
     A list of your current tables and their columns can be found at `db/schema.rb`.
-    <br />
-    <br />
+    <br>
+    <br>
     If you edit the Gemfile, be sure to `bundle` afterwards
 
 
