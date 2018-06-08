@@ -41,9 +41,9 @@ If you wanted to modify the code and go through localhost, follow the instructio
       ```
 
     - In order to generate a new migration, type:
-    ```
+    `
     $ bin/rails g migration NAME [field[:type][:index] field[:type][:index]]
-    ```
+    `
 
     - To edit the models, views, and controllers, visit the `app/` directory <br />
 
